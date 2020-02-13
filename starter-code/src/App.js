@@ -23,6 +23,7 @@ class App extends Component {
               return(  
                 <div className="list-group-item list-group-item-action" key={country.cca3}>
                     <Link to={`/CountryDetail/${country.cca3}`}>
+                        {country.flag} 
                         {country.name.common}
                     </Link>
                 </div>

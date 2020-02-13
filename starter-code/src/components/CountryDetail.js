@@ -22,7 +22,7 @@ const CountryDetail = (props) => {
                 </tr>
                 <tr>
                   <td>Area</td>
-                  <td>{foundCountry.area}km
+                  <td>{foundCountry.area} km
                     <sup>2</sup>
                   </td>
                 </tr>
