@@ -1,25 +1,29 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import countriesList from './countries.json'
 
 class App extends Component {
+
+  state = {
+    countries : countriesList
+  }
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <nav class="navbar navbar-dark bg-primary mb-3">
+        <div class="container">
+          <a class="navbar-brand" href="/">WikiCountries</a>
+        </div>
+      </nav>
+        {this.state.countries.map((country)=> {
+          return(
+            <div class="col-5" style={{maxHeight: 90}}>
+            <div class="list-group">
+          <a class="list-group-item list-group-item-action" href="/ABW">{country.flag}  {country.name.common}</a>
+            </div>
+          </div>
+          )
+        })}
       </div>
     );
   }
