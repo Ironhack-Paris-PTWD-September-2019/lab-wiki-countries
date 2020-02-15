@@ -22,15 +22,13 @@ class App extends Component {
           return(
             <div className="col-5" style={{maxHeight: 90}}>
             <div className="list-group">
-          <Link to='/CountryDetail' className="list-group-item list-group-item-action">{country.flag}  {country.name.common}</Link>
+              <Link to={`/CountryDetail/${country.cca3}`} className="list-group-item list-group-item-action">{country.flag}  {country.name.common}</Link>
             </div>
           </div>
           )
         })}
-         <CountryDetail name = {this.state.countries[0].name.common} capital = {this.state.countries[0].capital}/>
-
          <Switch>
-           <Route exact path='/CountryDetail' component={CountryDetail}/>
+           <Route exact path='/CountryDetail/:code' component={CountryDetail}/>
          </Switch>
       </div>
     );

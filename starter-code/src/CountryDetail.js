@@ -1,22 +1,29 @@
 // components/Home.js
 
 import React from 'react';
+import countriesList from './countries.json'
+import { Link } from 'react-router-dom';
 
 const CountryDetail = (props) => {
-  let {name , capital} = props
+
+  const getCountry = code => {
+    return countriesList.find(country => country.cca3 === code)
+  }
+  const foundCountry = getCountry(props.match.params.code);
+
   return (
-    <div class="col-7">
-    <h1>{name}</h1>
-    <table class="table">
+    <div className="col-7">
+    <h1>{foundCountry.name.common}</h1>
+    <table className="table">
       <thead></thead>
       <tbody>
         <tr>
           <td style={{width: 30}}>Capital</td>
-          <td>{capital}</td>
+          <td>{foundCountry.capital}</td>
         </tr>
         <tr>
           <td>Area</td>
-          <td>551695 km
+          <td>{foundCountry.area} km
             <sup>2</sup>
           </td>
         </tr>
@@ -24,14 +31,17 @@ const CountryDetail = (props) => {
           <td>Borders</td>
           <td>
             <ul>
-              <li><a href="/AND">Andorra</a></li>
-              <li><a href="/BEL">Belgium</a></li>
-              <li><a href="/DEU">Germany</a></li>
-              <li><a href="/ITA">Italy</a></li>
-              <li><a href="/LUX">Luxembourg</a></li>
-              <li><a href="/MCO">Monaco</a></li>
-              <li><a href="/ESP">Spain</a></li>
-              <li><a href="/CHE">Switzerland</a></li>
+              {foundCountry.borders.map((country)=>{
+                const getCountry = code => {
+                  return countriesList.find(country => country.cca3 === code)
+                }
+                const foundCountry = getCountry(country);
+                return(
+                <div>
+                  <li><Link to={`/CountryDetail/${foundCountry.cca3}`}>{foundCountry.name.common}</Link></li>
+                </div>
+                )
+              })}
             </ul>
           </td>
         </tr>
