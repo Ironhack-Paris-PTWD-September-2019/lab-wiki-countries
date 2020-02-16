@@ -4,7 +4,7 @@ import { Switch, Route } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import json from './countries.json';
 import 'bootstrap/dist/css/bootstrap.css';
-import CountryDetail from './CountryDetail';
+import CountryDetails from './CountryDetails';
 
 class App extends Component {
 
@@ -23,20 +23,17 @@ class App extends Component {
           <div class="col-5" style={{maxHeight: "90vh", overflow: "scroll"}}>
             <div class="list-group">
             
-            {json.map(country => (
-              <div class="list-group-item list-group-item-action">
-                <Link to={ `/${country.cca3}`}  key={country.cca3}>
-                  {/* <div>{country.flag}</div> */}
-                  <h2>{country.name.common}</h2></Link>
-              </div>
-            ))}
-
+              {json.map(country => (
+                <Link to={ `/${country.cca3}`}  key={country.cca3} class="list-group-item list-group-item-action" >
+                  <div>{country.flag} {country.name.common}</div>
+                </Link>
+              ))}
             
             </div>
           </div>
           <div class="col-7">
           <Switch >
-            <Route path="/:cca3" component={CountryDetail} />
+            <Route path="/:id" component={CountryDetails} />
           </Switch>
           </div>
         </div>  
