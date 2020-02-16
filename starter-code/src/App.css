@@ -30,3 +30,9 @@
     transform: rotate(360deg);
   }
 }
+
+.container h2 {
+  font-size: 0.8em;
+  color: black;
+  font-weight: inherit;
+}
